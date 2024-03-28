@@ -2,6 +2,7 @@
   display: flex;
   justify-content: flex-end;
   margin: 20px;
+  cursor: pointer;
 }
 
 .nav-section {
@@ -34,4 +35,18 @@
   border: none;
   border-bottom: solid #aaaaaa 1px;
   z-index: 5;
+}
+
+.product-card {
+  transition: transform 0.3s ease;
+  margin: 10px;
+  border: 10px solid white;
+}
+
+.product-card:hover {
+  transform: scale(1.04);
+}
+
+.product-card img{
+  width: 250px;
 }

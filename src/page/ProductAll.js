@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
 import ProductCard from '../component/ProductCard';
+import { useSearchParams } from 'react-router-dom';
 
 const ProductAll = () => {
 
     const [productList, setProductList] = useState([]);
+    const [query, setQuery] = useSearchParams();
 
     const getProducts = async() => {
-        let url = 'https://my-json-server.typicode.com/hong-sehyun/shopping-app/products/';
-        let response = await fetch(url);
-        let data = await response.json();
-        
-        setProductList(data);
+      let searchQuery = query.get('q') || "";
+      console.log("searchQuery : ", searchQuery);
+      let url = `https://my-json-server.typicode.com/hong-sehyun/shopping-app/products?q=${searchQuery}`;
+      let response = await fetch(url);
+      let data = await response.json();
+      
+      setProductList(data);
 
     }
 
     useEffect(() => {
         getProducts()
-    },[])
+    },[query])
 
   return (
     <div>

@@ -13,6 +13,16 @@ const Navbar = () => {
         navigate("/login");
     }
 
+    const search = (event) => {
+        if(event.key === "Enter") {
+            let keyword = event.target.value;
+            navigate(`/?q=${keyword}`);
+        }
+    }
+
+    const goToMain = () => {
+        navigate('/');
+    }
 
     return (
         <div>
@@ -26,6 +36,7 @@ const Navbar = () => {
                 <img
                     width={100} 
                     src='https://blog.kakaocdn.net/dn/Yt80C/btqDeJAYUBo/JQbTuukRladq2AUOeqgiEK/img.jpg' alt=''
+                    onClick={goToMain}
                 />
             </div>
             <div className='menu-area'>
@@ -37,7 +48,7 @@ const Navbar = () => {
 
                 <div className='input-area'>
                     <FontAwesomeIcon icon={ faSearch } />
-                    <input type="text" />
+                    <input type="text" onKeyPress={(event)=>search(event)}/>
                 </div>
 
             </div>

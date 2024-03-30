@@ -1,10 +1,10 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons'
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ authenticate, setAuthenticate }) => {
     const menuList = ['여성', 'Divided', '남성', '신생아/유아', '아동', 'H&M Home', 'Sale', '지속가능성']
 
     const navigate = useNavigate();
@@ -12,6 +12,10 @@ const Navbar = () => {
     const goToLogin = () => {
         navigate("/login");
     }
+
+    const logout = () => {
+        setAuthenticate(false);
+    };
 
     const search = (event) => {
         if(event.key === "Enter") {
@@ -27,10 +31,17 @@ const Navbar = () => {
     return (
         <div>
             <div>
-                <div className='login-button' onClick={goToLogin}>
-                    <FontAwesomeIcon icon={ faUser } />
-                    <div>로그인</div>
-                </div>
+            {authenticate ? (
+                    <div className='login-button' onClick={logout}>
+                        <FontAwesomeIcon icon={faSignOutAlt} />
+                        <div>로그아웃</div>
+                    </div>
+                ) : (
+                    <div className='login-button' onClick={goToLogin}>
+                        <FontAwesomeIcon icon={faUser} />
+                        <div>로그인</div>
+                    </div>
+                )}
             </div>
             <div className='nav-section'>
                 <img

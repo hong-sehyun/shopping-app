@@ -39,6 +39,10 @@
   border-bottom: solid #aaaaaa 1px;
   z-index: 5;
 }
+.input-area  {
+  text-align: center; 
+  margin: 5px 0; 
+}
 
 .mobile-menu-icon {
   display: none; 
@@ -69,11 +73,6 @@
   }
 
   .modal-body .menu-list li {
-    text-align: center; 
-    margin: 5px 0; 
-  }
-
-  .input-area  {
     text-align: center; 
     margin: 5px 0; 
   }

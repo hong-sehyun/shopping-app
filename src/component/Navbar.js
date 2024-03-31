@@ -42,10 +42,6 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
                     <li key={index}>{menu}</li>
                 ))}
             </ul>
-            <div className='input-area'>
-                <FontAwesomeIcon icon={faSearch} />
-                <input type="text" onKeyPress={(event) => search(event)} />
-            </div>
         </div>
     );
 
@@ -80,6 +76,10 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
                 />
             </div>
             {!mobileMenu && menuContent}
+            <div className='input-area'>
+                <FontAwesomeIcon icon={faSearch} />
+                <input type="text" onKeyPress={(event) => search(event)} />
+            </div>
         </div>
     )
 }

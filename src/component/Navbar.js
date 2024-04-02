@@ -1,24 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { faSearch, faSignOutAlt, faBars } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
+import { authenticateAction } from '../redux/actions/authenticateAction';
 
 
-const Navbar = ({ authenticate, setAuthenticate }) => {
+const Navbar = () => {
     const menuList = ['여성', 'Divided', '남성', '신생아/유아', '아동', 'H&M Home', 'Sale', '지속가능성']
     const [mobileMenu, setMobileMenu] = useState(false);
+    const id = useSelector((state) => state.auth.id);
+    const authenticate = useSelector((state) => state.auth.authenticate);
 
     const navigate = useNavigate();
+
+    const dispatch = useDispatch();
 
     const goToLogin = () => {
         navigate("/login");
     }
 
     const logout = () => {
-        setAuthenticate(false);
+        // setAuthenticate(false);
+        dispatch(authenticateAction.logout());
     };
+
+    useEffect(() => {}, [id]);
+
 
     const search = (event) => {
         if (event.key === "Enter") {

@@ -29,18 +29,18 @@ const ProductDetail = () => {
           <img src={product?.img}/>
         </Col>
         <Col>
-          <div>{product?.title}</div>
+          <div className='product-title'>{product?.title}</div>
           <div>₩{product?.price}</div>
           <div>{product?.choice == true ? "Conscious Choice" : ""}</div>
           {product?.size && (
-            <Form.Select aria-label="Default select example">
+            <Form.Select className='size-select' aria-label="Default select example">
               <option>사이즈 선택</option>
               {product.size.map((size) => (
                 <option value={size}>{size}</option>
               ))}
             </Form.Select>
           )}
-          <div><Button variant='danger' type="submit">추가</Button></div>
+          <div><Button className='add-button' variant='danger' type="submit">추가</Button></div>
         </Col>
       </Row>
     </Container>

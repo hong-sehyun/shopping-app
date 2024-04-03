@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Container, Col, Row, Button, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { productAction } from "../redux/actions/productAction";
+import { fetchProductDetail } from '../redux/reducers/productSlice';
 
 const ProductDetail = () => {
   let {id} = useParams();
@@ -13,9 +14,10 @@ const ProductDetail = () => {
 //  const [size, setSize] = useState(null);
 
   const getProductDetail = async () => {
-    dispatch(productAction.getProductDetail(id));
+    // dispatch(productAction.getProductDetail(id));
     // console.log(data);
     // setProduct(data);
+    dispatch(fetchProductDetail(id));
   }
 
   useEffect(() => {
